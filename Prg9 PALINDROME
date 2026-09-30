@@ -1,19 +1,10 @@
 #!/bin/bash
-clear
-echo -n "Enter Number: "
-read n # Read input number
-sd=0 # Stores remainder
-rev="" # Stores reversed number
-on=$n # Save original number
-while [ $n -gt 0 ]
-do
- sd=$(( $n % 10 )) # Get last digit
- n=$(( $n / 10 )) # Remove last digit
- rev=$(echo ${rev}${sd}) # Append digit to reversed string
-done
-if [ $on -eq $rev ] # Compare original with reversed
+
+read -p "Enter a string: " string
+
+if [[ "$(rev <<< "$string")" == "$string" ]]
 then
- echo "Number $on is a Palindrome"
+    echo "Given string is palindrome"
 else
- echo "Number $on is NOT a Palindrome"
+    echo "Given string is not a palindrome"
 fi
